@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>MapLibre Map Dashboard</title>
+    <meta
+      name="viewport"
+      content="initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css"
+    />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: lightgray;
+      }
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+      }
+      #map {
+        height: 75%; /* Adjust based on your preference */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for separation */
+      }
+      .dashboard {
+        height: 25%; /* Adjust based on your preference */
+        display: flex;
+      }
+      .dashboard-item {
+        flex: 1;
+        padding: 10px;
+        border-left: 1px solid #ddd; /* subtle line to separate dashboard items */
+      }
+      .dashboard-item:first-child {
+        border-left: none; /* Remove border for the first item */
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Demographic Analysis Dashboard</h1>
+      <p>
+        Visualizing Population Distribution and Median Age across Portland. The
+        data is from the US Census
+      </p>
+    </header>
+    <div id="map"></div>
+    <div class="dashboard">
+      <div class="dashboard-item" id="pie-chart">
+        <canvas id="pieChartCanvas"></canvas>
+      </div>
+
+      <div class="dashboard-item" id="bar-chart">
+        <canvas id="barChartCanvas"></canvas>
+      </div>
+      <div class="dashboard-item" id="median-age">
+        <h3>Age Range Legend</h3>
+        <div style="display: flex; align-items: center; margin-bottom: 5px">
+          <div
+            style="
+              width: 20px;
+              height: 20px;
+              background-color: #a5d8ff;
+              margin-right: 10px;
+            "
+          ></div>
+          18-30
+        </div>
+        <div style="display: flex; align-items: center; margin-bottom: 5px">
+          <div
+            style="
+              width: 20px;
+              height: 20px;
+              background-color: #ffeda0;
+              margin-right: 10px;
+            "
+          ></div>
+          31-40
+        </div>
+        <div style="display: flex; align-items: center; margin-bottom: 5px">
+          <div
+            style="
+              width: 20px;
+              height: 20px;
+              background-color: #feb24c;
+              margin-right: 10px;
+            "
+          ></div>
+          41-50
+        </div>
+        <div style="display: flex; align-items: center; margin-bottom: 5px">
+          <div
+            style="
+              width: 20px;
+              height: 20px;
+              background-color: #f03b20;
+              margin-right: 10px;
+            "
+          ></div>
+          51-60
+        </div>
+        <div style="display: flex; align-items: center; margin-bottom: 5px">
+          <div
+            style="
+              width: 20px;
+              height: 20px;
+              background-color: #a4d4ae;
+              margin-right: 10px;
+            "
+          ></div>
+          61+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="baseMap.js"></script>
+    <script src="mapStyle.js"></script>
+    <script src="fetchACSDemographicData.js"></script>
+    <script src="fetchPortlandCensusTracts.js"></script>
+    <script src="pieChart.js"></script>
+    <script src="barChart.js"></script>
+  </body>
+</html>
